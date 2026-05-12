@@ -19,8 +19,8 @@ import {
   Users
 } from "lucide-react";
 import "./styles.css";
+import { fetchExploreStories, fetchStory } from "./utils/api";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -42,19 +42,6 @@ function useReveal(refreshKey) {
   }, [refreshKey]);
 }
 
-async function fetchStory(username, regenerate = false) {
-  const response = await fetch(`${API_BASE}/api/story/${username}${regenerate ? "?regenerate=1" : ""}`);
-  const body = await response.json();
-  if (!response.ok) throw new Error(body.message || "Unable to generate this GitStory.");
-  return body;
-}
-
-async function fetchExploreStories() {
-  const response = await fetch(`${API_BASE}/api/explore`);
-  const body = await response.json();
-  if (!response.ok) throw new Error(body.message || "Unable to load GitStories.");
-  return body.stories ?? [];
-}
 
 function timeAgo(date) {
   const seconds = Math.max(1, Math.floor((Date.now() - new Date(date).getTime()) / 1000));
