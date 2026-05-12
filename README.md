@@ -108,6 +108,13 @@ For Replit:
 
 The server uses `PORT` from the environment when available.
 
+## Roadmap
+
+- [ ] PDF Export for stories
+- [ ] Custom themes (Classic, Cyberpunk, Minimal)
+- [ ] Integration with more social platforms
+- [ ] Public leaderboard for most starred developers
+
 ## License
 
 MIT
